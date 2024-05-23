@@ -23,7 +23,24 @@ function findMaxBST (rootNode) {
 }
 
 function findMinBT (rootNode) {
+  // if (root === null) return false;      
+  // if (root.value === target) return true;      
+  // if (binaryTreeSearch(root.left, target)) return true;     
+  // return binaryTreeSearch(root.right, target);
+ 
 
+  // Reference nodes that we visited
+  let min = rootNode.val;
+  // let currVal = curr.val 
+if (rootNode === null) return
+
+if (rootNode.left) {
+    min =  Math.min(findMinBT(rootNode.left), min)
+  } 
+if (rootNode.right) {
+    min = Math.min(findMinBT(rootNode.right), min)
+}
+return min
 }
 
 function findMaxBT (rootNode) {
@@ -31,7 +48,23 @@ function findMaxBT (rootNode) {
 }
 
 function getHeight (rootNode) {
-  // Your code here 
+  if (!rootNode) return -1
+  if (rootNode.left === null && rootNode.right === null) return 0
+  let count = 1
+//  We need to traverse to the farthest depth to find the height
+
+const stack = [rootNode]
+while (stack.length){
+    const currNode = stack.pop()
+    console.log(currNode.val)
+    if (currNode.left){
+        stack.push(currNode.left)
+    }
+    if (currNode.right){
+        stack.push(currNode.right)
+    }
+}
+
 }
 
 function balancedTree (rootNode) {
