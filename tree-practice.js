@@ -23,20 +23,20 @@ function findMaxBST (rootNode) {
 }
 
 function findMinBT (rootNode) {
-  // if (root === null) return false;      
-  // if (root.value === target) return true;      
-  // if (binaryTreeSearch(root.left, target)) return true;     
+  // if (root === null) return false;
+  // if (root.value === target) return true;
+  // if (binaryTreeSearch(root.left, target)) return true;
   // return binaryTreeSearch(root.right, target);
- 
+
 
   // Reference nodes that we visited
   let min = rootNode.val;
-  // let currVal = curr.val 
+  // let currVal = curr.val
 if (rootNode === null) return
 
 if (rootNode.left) {
     min =  Math.min(findMinBT(rootNode.left), min)
-  } 
+  }
 if (rootNode.right) {
     min = Math.min(findMinBT(rootNode.right), min)
 }
@@ -44,43 +44,54 @@ return min
 }
 
 function findMaxBT (rootNode) {
-  // Your code here 
+  // Your code here
+  let max = rootNode.val;
+  // let currVal = curr.val
+if (rootNode === null) return
+
+if (rootNode.left) {
+    max =  Math.max(findMaxBT(rootNode.left), max)
+  }
+if (rootNode.right) {
+    max = Math.max(findMaxBT(rootNode.right), max)
+}
+return max
 }
 
 function getHeight (rootNode) {
   if (!rootNode) return -1
   if (rootNode.left === null && rootNode.right === null) return 0
-  let count = 1
 //  We need to traverse to the farthest depth to find the height
 
-const stack = [rootNode]
-while (stack.length){
-    const currNode = stack.pop()
-    console.log(currNode.val)
-    if (currNode.left){
-        stack.push(currNode.left)
-    }
-    if (currNode.right){
-        stack.push(currNode.right)
-    }
-}
-
+let countLeft = 1
+let countRight = 1
+if (rootNode.left) {
+  countLeft += getHeight(rootNode.left)
+  }
+  if (rootNode.right) {
+    countRight += getHeight(rootNode.right)
+  }
+  if (countLeft > countRight) {
+    return countLeft
+  }
+  return countRight
 }
 
 function balancedTree (rootNode) {
-  // Your code here 
+  // Your code here
+  
 }
 
 function countNodes (rootNode) {
-  // Your code here 
+  // Your code here
 }
 
 function getParentNode (rootNode, target) {
-  // Your code here 
+  // Your code here
 }
 
 function inOrderPredecessor (rootNode, target) {
-  // Your code here 
+  // Your code here
 }
 
 function deleteNodeBST(rootNode, target) {
@@ -98,7 +109,7 @@ function deleteNodeBST(rootNode, target) {
 
   // Case 2: Two children:
   //  Set the value to its in-order predecessor, then delete the predecessor
-  //  Replace target node with the left most child on its right side, 
+  //  Replace target node with the left most child on its right side,
   //  or the right most child on its left side.
   //  Then delete the child that it was replaced with.
 
