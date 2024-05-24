@@ -78,7 +78,24 @@ if (rootNode.left) {
 }
 
 function balancedTree (rootNode) {
-  // Your code here
+  if (!rootNode) return true
+  if (rootNode.left === null && rootNode.right === null) return true
+//  We need to traverse to the farthest depth to find the height
+
+let countLeft = 1
+let countRight = 1
+if (rootNode.left) {
+  countLeft += balancedTree(rootNode.left)
+  }
+  if (rootNode.right) {
+    countRight += balancedTree(rootNode.right)
+  }
+  if (countLeft > countRight) {
+    countLeft++
+  }
+  if (countRight < countLeft){
+    countRight++
+  }
   
 }
 
@@ -111,29 +128,30 @@ function countNodes (rootNode) {
     // 1   3 5   7
 
 function getParentNode (rootNode, target) {
-if (rootNode.val === target) return null
 
-// If rootNode exists, then check if the rootNode's left and right = target
-// 
+if (rootNode.val === target) return null;
 
-if (rootNode) {
-  if (rootNode.left.val === target) {
-    return rootNode
-  } 
-   if (rootNode.right.val === target) {
-  return rootNode
-}
-else {
-  return getParentNode()
-}
-  // return getParentNode(rootNode.left, target)
-  // (getParentNode(rootNode.right, target))
-} 
+    const queue = [rootNode];
 
-if (rootNode.left.val !== target || rootNode.right.val !== target) {
-  return undefined
-}
+    while (queue.length) {
+        let currNode = queue.shift();
 
+        if (currNode.left && currNode.left.val === target) {
+            return currNode;
+        }
+        if (currNode.right && currNode.right.val === target) {
+            return currNode;
+        }
+
+        if (currNode.left) {
+            queue.push(currNode.left);
+        }
+        if (currNode.right) {
+            queue.push(currNode.right);
+        }
+    }
+
+    return undefined;
 
 }
 
