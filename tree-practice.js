@@ -77,26 +77,31 @@ if (rootNode.left) {
   return countRight
 }
 
-function balancedTree (rootNode) {
-  if (!rootNode) return true
-  if (rootNode.left === null && rootNode.right === null) return true
-//  We need to traverse to the farthest depth to find the height
 
-let countLeft = 1
-let countRight = 1
-if (rootNode.left) {
-  countLeft += balancedTree(rootNode.left)
-  }
-  if (rootNode.right) {
-    countRight += balancedTree(rootNode.right)
-  }
-  if (countLeft > countRight) {
-    countLeft++
-  }
-  if (countRight < countLeft){
-    countRight++
-  }
-  
+
+
+    //         8
+    //       /   \
+    //      3     10
+    //    /   \     \
+    //   2     5     11
+    //  /    /  \     \
+    // 1    4    7    12
+    //          /      \
+    //         6       15
+    //                /
+    //              14
+function balancedTree (rootNode) {
+//  We need to traverse to the farthest depth to find the height
+// If any child nodes are unbalanced, then the entire BT is unbalanced
+// Find the height of the left most branches 
+// Find the height of right branches
+// If they differ by one, then true
+// Else return false
+
+// Do preOrderTraversal, and check all children nodes are balanced
+
+
 }
 
 function countNodes (rootNode) {
