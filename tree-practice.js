@@ -83,15 +83,62 @@ function balancedTree (rootNode) {
 }
 
 function countNodes (rootNode) {
-  // Your code here
+  // Recurse left and right
+  // count them and add them
+
+  let leftCount = 0
+  let rightCount = 0
+  if (!rootNode) return
+
+  else {
+   let count = 1
+    if (rootNode.left) {
+      leftCount += countNodes(rootNode.left)
+      }
+      if (rootNode.right) {
+        rightCount += countNodes(rootNode.right)
+      }
+      return count + leftCount + rightCount
+  }
+
 }
 
+
+    //      4
+    //    /   \
+    //   2     6
+    //  / \   / \
+    // 1   3 5   7
+
 function getParentNode (rootNode, target) {
-  // Your code here
+if (rootNode.val === target) return null
+
+// If rootNode exists, then check if the rootNode's left and right = target
+// 
+
+if (rootNode) {
+  if (rootNode.left.val === target) {
+    return rootNode
+  } 
+   if (rootNode.right.val === target) {
+  return rootNode
+}
+else {
+  return getParentNode()
+}
+  // return getParentNode(rootNode.left, target)
+  // (getParentNode(rootNode.right, target))
+} 
+
+if (rootNode.left.val !== target || rootNode.right.val !== target) {
+  return undefined
+}
+
+
 }
 
 function inOrderPredecessor (rootNode, target) {
-  // Your code here
+
 }
 
 function deleteNodeBST(rootNode, target) {
